@@ -24,9 +24,9 @@ local Window = Rayfield:CreateWindow({
  
  
 
- local Section = Tab:CreateSection("Yeni şeyler eklenicekmi?")
+     local Section = Tab:CreateSection("Update Bilgilendirme")
 
- local Paragraph = Tab:CreateParagraph({Title = "evet", Content = "çok yakında"})
+ local Paragraph = Tab:CreateParagraph({Title = "Update", Content = "0.2"})
  
   local Section = Tab:CreateSection("santana#2023")
 
