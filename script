@@ -1,0 +1,138 @@
+HttpService = game:GetService("HttpService")
+getgenv().Spammer = false
+
+
+
+
+
+
+
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Angel Ware",
+    LoadingTitle = "Angel Ware",
+    LoadingSubtitle = "Hoşgeldin",
+    Discord = {
+       Enabled = true,
+       Invite = "7fWPQ7tuCp",
+       RememberJoins = true
+    }
+ })
+
+ local Tab = Window:CreateTab("Home", 4483362458) -- Title, Image
+ 
+ 
+
+ local Section = Tab:CreateSection("Yeni şeyler eklenicekmi?")
+
+ local Paragraph = Tab:CreateParagraph({Title = "evet", Content = "çok yakında"})
+ 
+  local Section = Tab:CreateSection("santana#2023")
+
+
+ local Tab = Window:CreateTab("Webhook Spammer", 4483362458) -- Title, Image
+
+ local Section = Tab:CreateSection("Önemli")
+
+ local Input = Tab:CreateInput({
+    Name = "Ne Yazsın",
+    PlaceholderText = "?",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Title)
+        getgenv().Title = Title
+    end,
+ })
+ 
+  local Input = Tab:CreateInput({
+    Name = "Açıklama",
+    PlaceholderText = "?",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Description)
+        getgenv().Description = Description
+    end,
+ })
+
+ 
+  local Section = Tab:CreateSection("Renk")
+
+ local Input = Tab:CreateInput({
+    Name = "Renk",
+    PlaceholderText = "Hex Kodlaması Kullan",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Color)
+        getgenv().Color = Color
+    end,
+ })
+
+
+ local Section = Tab:CreateSection("Webhook")
+
+ local Input = Tab:CreateInput({
+    Name = "Webhook Linki",
+    PlaceholderText = "?",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Webhook)
+        getgenv().URL = Webhook
+        Rayfield:Notify({
+            Title = "Başarılı",
+            Content = "Webhook Spammer Aktif",
+            Duration = 3,
+            Image = 7733924046,
+            Actions = { -- Notification Buttons
+               Ignore = {
+                  Name = "Tebrikler",
+                  Callback = function()
+                  
+               end
+            },
+         },
+         })
+    end,
+ })
+
+
+ local Toggle = Tab:CreateToggle({
+    Name = "Spam",
+    CurrentValue = false,
+    Flag = "Toggle1",  Callback = function(Value)
+        getgenv().Spammer = Value
+        if Value then
+            spammer(spammer)
+        end
+    end,
+ })
+
+
+ function spammer(spammer)
+    spawn(function()
+        while getgenv().Spammer == true do
+                        ---
+            local Response = syn.request(
+{
+    Url = getgenv().URL,
+    Method = 'POST',
+    Headers = {
+        ['Content-Type'] = 'application/json'
+    },
+    Body = HttpService:JSONEncode({
+        ["content"] = "",
+        ["embeds"] = {{
+            ["title"] = getgenv().Title,
+
+            ["description"] = getgenv().Description,
+
+            ["type"] = "rich",
+
+            ["color"] = tonumber(getgenv().color),
+
+        }}
+    })
+}
+)
+                    ---
+            wait()
+        end
+    end)
+end
+
